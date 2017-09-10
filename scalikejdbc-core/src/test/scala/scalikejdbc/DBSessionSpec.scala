@@ -628,7 +628,7 @@ class DBSessionSpec extends FlatSpec with Matchers with BeforeAndAfter with Sett
           try {
             SQL("create table dbsession_work_with_scala_big_decimal_values (id bigint generated always as identity, s bigint)").execute.apply()
           } catch {
-            case e: Exception =>
+            case _ =>
               try {
                 SQL("create table dbsession_work_with_scala_big_decimal_values (id bigint auto_increment, s bigint, primary key(id))").execute.apply()
               } catch {

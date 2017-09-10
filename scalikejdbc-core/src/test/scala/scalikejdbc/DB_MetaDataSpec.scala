@@ -155,7 +155,7 @@ class DB_MetaDataSpec extends FlatSpec with Matchers with Settings with LogSuppo
       val exp = List("id", "name", "group_id", "description", "birthday", "created_at")
       for (
         table <- List("meta_members", "Meta_Members", "META_MEMBERS")
-      ) withClue(s"table [${table}]") {
+      ) withClue(s"table [$table]") {
         lower(DB.getColumnNames(table)) should equal(exp)
       }
 

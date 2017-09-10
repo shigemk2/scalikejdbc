@@ -14,9 +14,7 @@ class MemberSpec extends FlatSpec with Matchers with Settings {
     DB autoCommit { implicit session =>
       try {
         SQL("drop table MEMBER").execute.apply()
-      } catch {
-        case e: Exception =>
-      }
+      } catch { case _: Exception => }
       try {
         SQL("""
             create table MEMBER (
@@ -28,7 +26,7 @@ class MemberSpec extends FlatSpec with Matchers with Settings {
             )
             """).execute.apply()
       } catch {
-        case e: Exception =>
+        case _: Exception =>
       }
     }
 
@@ -124,7 +122,7 @@ class MemberSpec extends FlatSpec with Matchers with Settings {
         NamedMember.findBy("name = /*'name*/''", 'name -> "Rollback").size should equal(1)
         throw new RuntimeException
       }
-    } catch { case e: Exception => }
+    } catch { case _: Exception => }
     NamedMember.findBy("name = /*'name*/''", 'name -> "Rollback").size should equal(0)
 
   }

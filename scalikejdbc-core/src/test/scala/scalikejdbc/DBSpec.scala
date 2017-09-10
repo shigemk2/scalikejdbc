@@ -652,7 +652,7 @@ class DBSpec extends FlatSpec with Matchers with BeforeAndAfter with Settings wi
         table.isDefined should equal(true)
       } finally {
         try DB autoCommit { implicit s => SQL(s"drop table ${tableName}").execute.apply() }
-        catch { case e: Exception => }
+        catch { case _: Exception => }
       }
     }
   }
